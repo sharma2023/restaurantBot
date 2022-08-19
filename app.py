@@ -5,9 +5,10 @@ from carousel_t import carousel_template_message
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationMessage, FlexSendMessage
 import requests, json, os
 from orderjun import order_template_message
+import carousel_shops
 
 load_dotenv()
 
@@ -52,7 +53,7 @@ def handle_message(event):
         place_name = locresponse
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f"位置を設定しました。\n{locresponse}\n\n続きまして、他の設定を行ってください\n使えるコマンド: \n@loc - 位置を設定\n@kyori - 範囲を設定\n@jun - 表示の順を設定\n@genre - ジャンルを設定\n@place - 設定の場所を表示\n@setting - 設定を表示\n\n@show - 店を表示")
+            TextSendMessage(text=f"位置を設定しました。\n{locresponse}")
         )
     except:
         text=event.message.text
@@ -104,10 +105,15 @@ def handle_message(event):
         elif ptext.startswith("お好み焼き・もんじゃ"): genre = "G016"
         elif ptext.startswith("バー・カクテル"): genre = "G012"
         elif ptext.startswith("洋食"): genre = "G005"
+        elif ptext.startswith("test"): 
+            line_bot_api.reply_message(
+                event.reply_token,
+                carousel_shops.get_shops(hot, latitude, longitude, range, order_jun, genre)
+            )
         elif ptext.startswith("@setting"):
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=f"おすすめのTOP10店。\nの設定の場所は\n{place_name}\nです。変えたい場合は、@locを使ってください")
+                TextSendMessage(text=f"\nの設定の場所は\n{place_name}\nです。変えたい場合は、@locを使ってください")
             )
         elif latitude != 0.0 and range != 0 and order_jun != 0 and genre != "":
             hotpepper_url = f"https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key={hot}&lat={latitude}&lng={longitude}&range={range}&order={order_jun}&genre={genre}&format=json"
@@ -125,30 +131,6 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text="その用語わかりません\nもしくは設定が終わっていません。")
             )
-        # if latitude!=0.0 and ptext.startswith("@show"):
-        #     hotpepper_url = f"https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key={hot}&lat={latitude}&lng={longitude}&range={range}&order=4&format=json"
-        #     hotpepper_res = json.loads(requests.get(hotpepper_url).text)
-        #     line_bot_api.reply_message(
-        #         event.reply_token,
-        #         TextSendMessage(text=hotpepper_res["results"]["shop"][0]["name"])
-        #     )
-        #     line_bot_api.reply_message(
-        #         event.reply_token,
-        #         TextSendMessage(text=hotpepper_res["results"]["shop"][1]["name"])
-        #     )
-        
-        # print(range)
-
-# line_bot_api.reply_message(
-#                 event.reply_token,
-#                 carousel_template_message
-#             )
-
-
-# commands
-# @loc - asks for location
-# @kyori - asks for kyori
-# @
 
 if __name__ == "__main__":
     app.run()

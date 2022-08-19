@@ -2,7 +2,6 @@ from linebot.models import (
     CarouselTemplate, CarouselColumn, MessageAction, TemplateSendMessage
 )
 
-place="新宿"
 
 carousel_template_message = TemplateSendMessage(
     alt_text='お店のジャンルを選択してください',
@@ -11,7 +10,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://bimi.jorudan.co.jp/topicsimage/2018/02/60-main.jpg',
                 title='居酒屋',
-                text=f'{place}の居酒屋',
+                text=f'居酒屋',
                 actions=[
                     MessageAction(
                         label='近くの居酒屋を探す',
@@ -22,7 +21,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://favy-tokyo.s3.amazonaws.com/uploads/topic_item/image/664070/retina_PXL_20220301_065127176.PORTRAIT.jpg',
                 title='ラーメン',
-                text=f'{place}のラーメン',
+                text=f'ラーメン',
                 actions=[
                     MessageAction(
                         label='近くのラーメン屋を探す',
@@ -33,7 +32,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://media-assets.aumo.jp/uploads/photo/external_photo/data/73589/large_7065a015-b4b1-4e74-90d7-87ee9c330257.jpg',
                 title='中華料理',
-                text=f'{place}の中華料理',
+                text=f'中華料理',
                 actions=[
                     MessageAction(
                         label='近くの中華料理店を探す',
@@ -44,7 +43,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://btob.kanehatsu.co.jp/dcms_media/image/japanese_food.jpg',
                 title='和食',
-                text=f'{place}の和食',
+                text=f'和食',
                 actions=[
                     MessageAction(
                         label='近くの和食を探す',
@@ -55,7 +54,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://imgfp.hotp.jp/IMGH/19/85/P038861985/P038861985_480.jpg',
                 title='韓国料理店',
-                text=f'{place}の韓国料理店',
+                text=f'韓国料理店',
                 actions=[
                     MessageAction(
                         label='近くの韓国料理店を探す',
@@ -66,7 +65,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://cdn.macaro-ni.jp/image/summary/87/87633/pOOSoQJ8FZb4xXCDDOeNpX9NGPhtacY4H76P05he.jpeg',
                 title='イタリアン料理店',
-                text=f'{place}のイタリアン料理店',
+                text=f'イタリアン料理店',
                 actions=[
                     MessageAction(
                         label='近くのイタリアン料理店を探す',
@@ -77,7 +76,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://webcms.komachi-mag.com/wp-content/uploads/sites/4/2018/11/andcafe2-1024x682.jpg',
                 title='カフェ・スイーツ',
-                text=f'{place}のカフェ・スイーツ',
+                text=f'カフェ・スイーツ',
                 actions=[
                     MessageAction(
                         label='近くのカフェを探す',
@@ -88,7 +87,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://img.cpcdn.com/recipes/2581094/640x640c0_51_320_320_320/90bf43c599352101576867fb51d3faba.jpg',
                 title='お好み焼き・もんじゃ',
-                text=f'{place}のお好み焼き・もんじゃ',
+                text=f'お好み焼き・もんじゃ',
                 actions=[
                     MessageAction(
                         label='近くのお好み焼き店を探す',
@@ -99,7 +98,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://imgfp.hotp.jp/IMGH/62/24/P025286224/P025286224_480.jpg',
                 title='バー・カクテル',
-                text=f'{place}のバー・カクテル',
+                text=f'バー・カクテル',
                 actions=[
                     MessageAction(
                         label='近くのバーを探す',
@@ -110,7 +109,7 @@ carousel_template_message = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://domani.shogakukan.co.jp/wp-content/uploads/2020/06/shutterstock_1356028613_790x500.jpg',
                 title='洋食',
-                text=f'{place}の洋食',
+                text=f'洋食',
                 actions=[
                     MessageAction(
                         label='近くの洋食を探す',
